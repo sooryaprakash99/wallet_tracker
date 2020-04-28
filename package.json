@@ -1,0 +1,25 @@
+{
+  "name": "wallet-tracker",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npx babel server --out-dir dist/server",
+    "start" : "node ./dist/server/app.js"
+  },
+  "dependencies": {
+    "@babel/node": "^7.8.7",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "jade": "^1.11.0",
+    "morgan": "~1.9.1",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5"
+  }
+}
