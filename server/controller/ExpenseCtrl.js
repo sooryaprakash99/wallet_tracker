@@ -54,7 +54,11 @@ export default class ExpenseCtrl {
 
             return result;
         }
+    }
 
+    findExpenses(userId) {
+        let expenseResult = new UserExpenses().findAll(userId);
+        return result;
     }
 
 

@@ -12,6 +12,16 @@ export default class Crud {
         this.user_expenses = user_expenses;
     }
 
+    findAll(id) {
+        if (this.tablename === "user_expenses") {
+            let result = this.user_expenses.filter(function (expense) {
+                return expense.user_id === id;
+            });
+            return result;
+        }
+        return [];
+    }
+
     find(id) {
         let result;
         if (this.tablename === 'user_details') {

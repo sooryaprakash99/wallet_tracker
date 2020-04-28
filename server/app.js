@@ -17,10 +17,7 @@ app.use(session({
   cookie: { maxAge: 600000 }
 }));
 
-//https://medium.com/front-end-weekly/server-side-rendering-with-react-and-express-382591bfc77c
-//https://github.com/cluemediator/login-app-reactjs/tree/master/src
-//https://github.com/cluemediator/auth-api-nodejs
-// view engine setup
+
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'html');
 
