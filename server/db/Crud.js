@@ -1,6 +1,6 @@
-let user_auth = require("../../inmemory_db/user_auth.json");
-let user_details = require("../../inmemory_db/user_details.json");
-let user_expenses = require("../../inmemory_db/user_expenses.json");
+let user_auth = require("../inmemory_db/user_auth.json");
+let user_details = require("../inmemory_db/user_details.json");
+let user_expenses = require("../inmemory_db/user_expenses.json");
 let uuid = require("uuid").v1;
 
 export default class Crud {

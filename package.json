@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build:server": "npx babel server --out-dir dist/server",
-    "start": "node ./dist/server/app.js",
-    "build:client": "webpack",
+    "start": "nodemon --exec babel-node server/app.js",
+    "build:client": "webpack --mode development --watch",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*"
   },
   "dependencies": {

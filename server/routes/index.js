@@ -8,7 +8,8 @@ let router = express.Router();
 router.get('/', (req, res) => {
   req.session.userId = "c5ea4c0-4067-11e9-8b2d-1b9d6bcdbbfd";
   req.session.save((err) => {
-    res.sendFile("../../public/index.html", { isLoggedIn: false });
+    console.log(req.session)
+    res.sendFile('../public/index.html', { root: __dirname })
   });
 });
 
