@@ -57,7 +57,7 @@ export default class ExpenseCtrl {
 
     getAllExpenses(userId) {
         let expenseResult = new UserExpenses().findAll(userId);
-        return result;
+        return expenseResult;
     }
 
 }

@@ -4,16 +4,7 @@ import LoginCtrl from "../controller/LoginCtrl";
 
 let router = express.Router();
 
-/* GET home page. */
-router.get('/', (req, res) => {
-  req.session.userId = "c5ea4c0-4067-11e9-8b2d-1b9d6bcdbbfd";
-  req.session.save((err) => {
-    console.log(req.session)
-    res.sendFile('../public/index.html', { root: __dirname })
-  });
-});
-
-router.post("/login", function (req, res) {
+router.post("/", function (req, res) {
 
   let username = req.body.username;
   let password = req.body.password;
@@ -33,15 +24,6 @@ router.post("/login", function (req, res) {
       }
     });
   }
-});
-
-router.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return console.log(err);
-    }
-    res.redirect('/');
-  });
 });
 
 module.exports = router;

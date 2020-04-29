@@ -13,13 +13,13 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        // axios.get('http://localhost:8080/expenses')
-        //     .then(function (response) {
-        //         this.setState({ expensesList: response });
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+        axios.get('http://localhost:8080/expenses')
+            .then((response) => {
+                this.setState({ expensesList: response.data });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     render() {
@@ -27,30 +27,25 @@ class Home extends React.Component {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td colSpan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    {this.state.expensesList.map((expense, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{expense.id}</td>
+                                <td>{expense.date}</td>
+                                <td>{expense.description}</td>
+                                <td>{expense.type}</td>
+                                <td>{expense.amount}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </Table>
         );
