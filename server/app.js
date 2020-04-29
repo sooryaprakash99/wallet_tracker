@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var ejs = require('ejs');
 
 var logger = require('morgan');
 var session = require('express-session');
@@ -18,10 +19,10 @@ app.use(session({
 }));
 
 
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../../public')));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -46,8 +47,6 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
-
-  console.log("Error occurred::::::::::::::::::", err)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

@@ -1,0 +1,46 @@
+#appContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#table{
+    margin-left: auto;
+    margin-top: 100px;
+    margin-right: auto;
+    border: 1px solid black;
+    display: block;
+    overflow-y: scroll;
+    height: 450px;
+    width: 40%;
+}
+
+#loading{
+    margin-top: 50px;
+    font-size: large;
+    font-weight: bold;
+    color: #0008ff;
+}
+
+body{
+    background-color: #f7e6e6; 
+}
+
+table {
+    border-collapse: collapse;
+}
+  
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even){background-color: #f2f2f2}
+  
+th {
+    background-color: #a37a7a;
+    color: black;
+    position: sticky;
+    top: 0px;
+}

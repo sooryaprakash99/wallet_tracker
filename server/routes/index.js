@@ -5,26 +5,11 @@ import LoginCtrl from "../controller/LoginCtrl";
 let router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  // if (!req.session.userId) {
-  //   //Render the login page
-  //   res.status(200).send({ message: "working fine" });
-  // } else {
-  //   res.status(200).send({ "message": "session available" })
-  // }
-
-  console.log(req.session, req.sessionID)
-  if (!req.session.userId) {
-    console.log(req.session, req.sessionID)
-    req.session.userId = "soorya";
-    req.session.save(function(err) {
-      res.render('index', {'title' : "Wallet Tacker"});
-    })
-    
-  } else {
-    res.render('index', {'title' : "Wallet Tacker"});
-  }
-   
+router.get('/', (req, res) => {
+  req.session.userId = "c5ea4c0-4067-11e9-8b2d-1b9d6bcdbbfd";
+  req.session.save((err) => {
+    res.sendFile("../../public/index.html", { isLoggedIn: false });
+  });
 });
 
 router.post("/login", function (req, res) {

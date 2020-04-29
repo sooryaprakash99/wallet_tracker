@@ -6,21 +6,25 @@ import LoginCtrl from "../controller/LoginCtrl";
 var router = express.Router();
 var expenseCtrl = new ExpenseCtrl();
 
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res) {
   let result = expenseCtrl.createExpense(req.body);
   sendResponse(result, res);
 });
 
-router.put('/:expenseId', function (req, res, next) {
+router.put('/:expenseId', function (req, res) {
   let result = expenseCtrl.updateExpense(req.params.expenseId, req.body);
   sendResponse(result, res);
 });
 
-router.delete('/:expenseId', function (req, res, next) {
+router.delete('/:expenseId', function (req, res) {
   let result = expenseCtrl.deleteExpense(req.params.expenseId, req.session.userId);
   sendResponse(result, res);
 });
 
+router.get('/', function (req, res) {
+  let result = expenseCtrl.getAllExpenses(req.session.userId);
+  sendResponse(result, res);
+});
 
 function sendResponse(result, res) {
   if (result.code) {

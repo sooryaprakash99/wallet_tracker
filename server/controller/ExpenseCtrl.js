@@ -4,7 +4,6 @@ import UserDetails from "../db/UserDetails";
 export default class ExpenseCtrl {
 
     constructor() {
-
     }
 
     createExpense(expenseObj) {
@@ -56,11 +55,9 @@ export default class ExpenseCtrl {
         }
     }
 
-    findExpenses(userId) {
+    getAllExpenses(userId) {
         let expenseResult = new UserExpenses().findAll(userId);
         return result;
     }
-
-
 
 }
