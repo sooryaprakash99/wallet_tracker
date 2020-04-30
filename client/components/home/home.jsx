@@ -1,5 +1,6 @@
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ListExpenses from '../list/listExpenses';
 import EditExpense from '../editList/EditExpense';
@@ -97,7 +98,8 @@ class Home
     }
 
     logout() {
-        localStorage.removeItem('isLoggedIn')
+        localStorage.removeItem('isLoggedIn');
+        location.reload();
     }
 
     componentDidMount() {
@@ -115,7 +117,7 @@ class Home
     render() {
         return (<div>
             <h1>Wallet Tracker</h1>
-            <button onClick="logout()">Logout</button>
+            <button onClick={this.logout}>Logout</button>
             <table>
                 <thead>
                     <tr>
