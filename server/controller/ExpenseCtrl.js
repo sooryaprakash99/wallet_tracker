@@ -47,7 +47,7 @@ export default class ExpenseCtrl {
     }
 
     deleteExpense(id, userId) {
-        let existngExpense = userExpenses.find(expenseId);
+        let existngExpense = new UserExpenses().find(id);
         if (!existngExpense || existngExpense.user_id !== userId) {
             return {
                 code: 404,
@@ -55,7 +55,6 @@ export default class ExpenseCtrl {
             }
         } else {
             let result = new UserExpenses().delete({ id: id });
-
             return result;
         }
 

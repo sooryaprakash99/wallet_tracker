@@ -9,11 +9,8 @@ ReactDOM.render(
   <div id='appContainer'>
     <Header name='E-Wallet Tracker'></Header>
     <body>
-      <div class="content">
-        <App />
-      </div>
+      <App />
     </body>
-
   </div>,
   document.getElementById('app')
 );

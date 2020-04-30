@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
-import ListExpenses from '../ListExpenses/ListExpenses';
+import Home from '../home/Home';
 
 class Login extends React.Component {
     constructor(props) {
@@ -29,7 +29,8 @@ class Login extends React.Component {
             password: password
         })
             .then(function (response) {
-                ReactDOM.render(<ListExpenses />, document.getElementById('app'));
+                localStorage.setItem('isLoggedIn', true);
+                ReactDOM.render(<Home />, document.getElementById('app'));
             })
             .catch(function (error) {
                 console.log(error);

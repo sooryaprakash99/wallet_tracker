@@ -1,29 +1,29 @@
 [
     {
-        "id": "135",
+        "id": "f6ce0757-0394-4fa1-afa9-65666c963474",
         "title": "Dress Purchase",
         "user_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
         "timestamp": "26-05-2020",
         "description": "Purchased dress",
-        "type": "paid",
+        "income": "expense",
         "amount": 190
     },
     {
-        "id": "100",
+        "id": "ff11e5ad-3275-4c61-9f68-cdfcf884d917",
         "title": "Amzon Refund",
         "user_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
         "timestamp": "24-05-2020",
         "description": "Amazon refund",
-        "type": "income",
+        "income": "income",
         "amount": 341
     },
     {
-        "id": "255",
+        "id": "52fd6918-3726-4a08-aebc-9eb1b337cfb4",
         "title": "Room rent",
         "user_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
         "timestamp": "01-05-2020",
         "description": "Room rent",
-        "type": "expense",
+        "income": "expense",
         "amount": 1500
     }
 ]

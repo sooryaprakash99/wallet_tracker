@@ -53,5 +53,5 @@ app.get('/', (req, res) => {
   res.sendFile('public/default.html', { root: __dirname })
 });
 
-app.listen(3000, () => { logger.error('App listening on port 4000') })
+app.listen(3000, () => { logger.error('App listening on port 3000') })
 
