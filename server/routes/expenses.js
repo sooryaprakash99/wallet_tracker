@@ -20,6 +20,11 @@ router.get('/', function (req, res) {
   sendResponse(result, res);
 });
 
+router.delete('/:expenseId', function (req, res, next) {
+  let result = expenseCtrl.deleteExpense(req.params.expenseId, req.session.userId);
+  sendResponse(result, res);
+});
+
 function sendResponse(result, res) {
   if (result.code) {
     res.status(result.code).send({ message: result.message })
