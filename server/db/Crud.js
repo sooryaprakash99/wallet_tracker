@@ -65,18 +65,6 @@ export default class Crud {
         return record;
     }
 
-    delete(record) {
-        if (this.tablename === "user_expenses") {
-            let index = this.findRecordIndex(this.user_expenses, record, this.tablename);
-            this.user_expenses.splice(index, 1);
-        } else {
-            let index = this.findRecordIndex(this.user_details, record, this.tablename);
-            this.user_details.splice(index, 1);
-        }
-        return "ok";
-    }
-
-
     findRecordIndex(list, record, type) {
         var index;
         if (type === "user_details") {

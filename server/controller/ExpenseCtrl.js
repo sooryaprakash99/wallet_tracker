@@ -41,20 +41,6 @@ export default class ExpenseCtrl {
         }
     }
 
-    deleteExpense(id, userId) {
-        let existngExpense = userExpenses.find(expenseId);
-        if (!existngExpense || existngExpense.user_id !== userId) {
-            return {
-                code: 404,
-                message: "Expense detail not found"
-            }
-        } else {
-            let result = new UserExpenses().delete({ id: id });
-
-            return result;
-        }
-    }
-
     getAllExpenses(userId) {
         let expenseResult = new UserExpenses().findAll(userId);
         return expenseResult;

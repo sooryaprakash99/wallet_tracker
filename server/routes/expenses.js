@@ -16,11 +16,6 @@ router.put('/:expenseId', function (req, res) {
   sendResponse(result, res);
 });
 
-router.delete('/:expenseId', function (req, res) {
-  let result = expenseCtrl.deleteExpense(req.params.expenseId, req.session.userId);
-  sendResponse(result, res);
-});
-
 router.get('/', function (req, res) {
   let result = expenseCtrl.getAllExpenses(req.session.userId);
   sendResponse(result, res);

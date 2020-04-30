@@ -13,7 +13,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/expenses')
+        axios.get('http://localhost:3000/expenses')
             .then((response) => {
                 this.setState({ expensesList: response.data });
             })
