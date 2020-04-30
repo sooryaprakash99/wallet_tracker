@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var ejs = require('ejs');
 
 import logger from './utils/logger';
 var session = require('express-session');
@@ -15,7 +14,7 @@ app.use(session({
   secret: 'XYk2!',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 600000 }
+  cookie: { maxAge: 300000 }
 }));
 
 
@@ -27,21 +26,17 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-//app.use(express.static(path.join(__dirname, 'public')));
-
-app.use("*", (req, res, next) => {
-  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-  res.header('Expires', '-1');
-  res.header('Pragma', 'no-cache');
-  next()
-})
-
+/**
+ * 
+ * @param {Saved user detail during login. Session expire configured as 5mins } req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 var auth = function (req, res, next) {
   if (req.session.user) {
     next();
   } else {
-    res.status(401).send({ message: 'Unauthorized' })
+    res.redirect("/");
   }
 }
 
@@ -50,12 +45,9 @@ app.use('/expenses', auth, expensesRouter);
 
 app.get('/logout', (req, res) => {
   req.session.destroy((err) => {
-    if (err) {
-      return console.log(err);
-    }
     res.redirect('/');
   });
-})
+});
 
 app.get('/', (req, res) => {
   res.sendFile('public/default.html', { root: __dirname })

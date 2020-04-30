@@ -29,6 +29,7 @@ class EditExpense extends React.Component {
     }
 
     handleCancel(e) {
+        e.preventDefault();
     }
 
     render() {

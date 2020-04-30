@@ -41,28 +41,30 @@ class Login extends React.Component {
     }
 
     render() {
-        const { error } = this.state;
 
         return (
-            <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control type="email" placeholder="Enter Username"
-                        label="Username"
-                        name="username"
-                        onChange={this.handleChange}
-                    />
-                </Form.Group>
+            <div>
+                <Form onSubmit={this.onSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control type="email" placeholder="Enter Username"
+                            label="Username"
+                            name="username"
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" label="Password"
-                        name="password" onChange={this.handleChange} />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" label="Password"
+                            name="password" onChange={this.handleChange} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Submit
                 </Button>
-            </Form>
+                </Form>
+
+            </div>
         );
     }
 }

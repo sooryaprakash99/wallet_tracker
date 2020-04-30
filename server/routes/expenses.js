@@ -1,7 +1,6 @@
 
 import express from "express";
 import ExpenseCtrl from "../controller/ExpenseCtrl";
-import LoginCtrl from "../controller/LoginCtrl";
 
 var router = express.Router();
 var expenseCtrl = new ExpenseCtrl();

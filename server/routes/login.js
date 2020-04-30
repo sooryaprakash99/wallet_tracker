@@ -11,11 +11,10 @@ router.post("/", function (req, res) {
 
   var loginCtrl = new LoginCtrl();
   let result = loginCtrl.loginUser(username, password);
-
   if (result.code) {
     res.status(result.code).send(result.message);
   } else {
-    req.session.userId = result.id;
+    req.session.user = result;
     req.session.save((err) => {
       if (!err) {
         res.status(200).send(result);
@@ -25,5 +24,7 @@ router.post("/", function (req, res) {
     });
   }
 });
+
+
 
 module.exports = router;

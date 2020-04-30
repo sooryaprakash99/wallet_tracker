@@ -1,7 +1,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 
 class ListExpenses
     extends React.Component {
@@ -11,6 +11,7 @@ class ListExpenses
             expensesList: [],
             selectedExpense: ''
         }
+        this.editExxpense = this.editExxpense.bind(this);
     }
 
     componentDidMount() {
@@ -19,36 +20,45 @@ class ListExpenses
                 this.setState({ expensesList: response.data });
             })
             .catch((error) => {
-                console.log(error);
+                if (error)
+                    console.log(error);
             });
+    }
+
+    editExxpense(e, expense) {
+        console.log(expense)
     }
 
     render() {
         return (
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.expensesList.map((expense, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{expense.id}</td>
-                                <td>{expense.timestamp}</td>
-                                <td>{expense.description}</td>
-                                <td>{expense.type}</td>
-                                <td>{expense.amount}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </Table>
+            <div>
+                <h3>Expenses</h3>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.expensesList.map((expense, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{expense.id} <Button onClick="editExpense({expense})"> EDIT</Button></td>
+                                    <td>{expense.timestamp}</td>
+                                    <td>{expense.description}</td>
+                                    <td>{expense.type}</td>
+                                    <td>{expense.amount}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </Table>
+            </div>
+
         );
     }
 }
