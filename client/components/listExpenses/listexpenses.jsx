@@ -3,7 +3,8 @@ import React from 'react';
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
 
-class Home extends React.Component {
+class ListExpenses
+    extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +40,7 @@ class Home extends React.Component {
                         return (
                             <tr key={index}>
                                 <td>{expense.id}</td>
-                                <td>{expense.date}</td>
+                                <td>{expense.timestamp}</td>
                                 <td>{expense.description}</td>
                                 <td>{expense.type}</td>
                                 <td>{expense.amount}</td>
@@ -52,4 +53,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default ListExpenses;

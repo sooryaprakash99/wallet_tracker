@@ -19,6 +19,13 @@ class EditExpense extends React.Component {
 
 
     handleSubmit(expense) {
+        axios.post(`http://localhost:3000/expenses/${expense.id}`, expense)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     handleCancel(e) {

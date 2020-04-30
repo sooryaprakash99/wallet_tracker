@@ -1,7 +1,9 @@
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import ListExpenses from '../ListExpenses/ListExpenses';
 
 class Login extends React.Component {
     constructor(props) {
@@ -22,26 +24,16 @@ class Login extends React.Component {
         e.preventDefault();
 
         const { username, password } = this.state;
-
         axios.post('http://localhost:3000/login', {
             username: username,
             password: password
         })
             .then(function (response) {
-                console.log(response);
+                ReactDOM.render(<ListExpenses />, document.getElementById('app'));
             })
             .catch(function (error) {
                 console.log(error);
             });
-
-        // this.setState({ error: false });
-
-        // if (!(username === 'george' && password === 'foreman')) {
-        //     return this.setState({ error: true });
-        // }
-
-        // console.log("you're logged in. yay!");
-        // store.set('loggedIn', true);
     }
 
     handleChange(e) {

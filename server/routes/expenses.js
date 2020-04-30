@@ -17,7 +17,7 @@ router.put('/:expenseId', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-  let result = expenseCtrl.getAllExpenses(req.session.userId);
+  let result = expenseCtrl.getAllExpenses(req.session.user.id);
   sendResponse(result, res);
 });
 

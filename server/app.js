@@ -27,6 +27,7 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("*", (req, res, next) => {
@@ -36,10 +37,18 @@ app.use("*", (req, res, next) => {
   next()
 })
 
-app.use("/login", loginRouter)
-app.use('/expenses', expensesRouter);
+var auth = function (req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.status(401).send({ message: 'Unauthorized' })
+  }
+}
 
-app.get("/logout", (req, res) => {
+app.use("/login", loginRouter);
+app.use('/expenses', auth, expensesRouter);
+
+app.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return console.log(err);
@@ -52,5 +61,5 @@ app.get('/', (req, res) => {
   res.sendFile('public/default.html', { root: __dirname })
 });
 
-app.listen(3000, ()=>{logger.error('App listening on port 4000')})
+app.listen(3000, () => { logger.error('App listening on port 4000') })
 

@@ -11,14 +11,13 @@ class AddExpense extends React.Component {
     }
 
     handleSubmit(expense) {
-        console.log("The expense is::::::::::::::::", expense)
-        // axios.post('http://localhost:3000/expenses', expense)
-        //     .then(function (response) {
-        //         console.log(response);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+        axios.post('http://localhost:3000/expenses', expense)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     handleCancel(e) {

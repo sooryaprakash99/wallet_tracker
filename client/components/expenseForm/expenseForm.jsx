@@ -25,7 +25,6 @@ class ExpenseForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state)
         const { expense } = this.state;
         const { handleSubmit } = this.props;
 
@@ -39,12 +38,12 @@ class ExpenseForm extends React.Component {
     }
 
     handleChange(e) {
-        console.log(e.target.name, e.target.value);
-        this.setState({ [e.target.name]: e.target.value });
+        const { expense } = this.state;
+        this.setState({ expense: { ...expense, [e.target.name]: e.target.value } });
     }
 
     render() {
-      
+
         const { expense: { title, description, type, timestamp, amount } } = this.state;
         const { handleCancel, submitText = 'Create' } = this.props;
 
@@ -70,7 +69,7 @@ class ExpenseForm extends React.Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Type</Form.Label>
-                    <Form.Control as="select" name="type" value={type}>
+                    <Form.Control as="select" name="type" value={type} onChange={this.handleChange}>
                         <option>income</option>
                         <option>paid</option>
                     </Form.Control>
