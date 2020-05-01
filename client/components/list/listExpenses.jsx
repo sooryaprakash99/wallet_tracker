@@ -12,7 +12,7 @@ class ListExpenses extends Component {
             <tr key={this.props.id}>
                 <td>{this.props.item.title}</td>
                 <td>{this.props.item.timestamp}</td>
-                <td>{this.props.item.desc}</td>
+                <td>{this.props.item.description}</td>
                 <td>{this.props.item.income}</td>
                 <td>{this.props.item.amount}</td>
                 <td><button

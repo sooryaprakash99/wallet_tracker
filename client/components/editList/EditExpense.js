@@ -4,6 +4,26 @@ class EditExpense extends Component {
   constructor(props) {
     super(props);
     this.edit = this.edit.bind(this);
+    this.onAmountChange = this.onAmountChange.bind(this);
+    this.timestampChange = this.timestampChange.bind(this);
+
+
+
+  }
+
+  onAmountChange() {
+    var invalidChars = /[^0-9]/gi
+    if (invalidChars.test(document.getElementById('editAmount').value)) {
+      document.getElementById('editAmount').value = document.getElementById('editAmount').value.replace(invalidChars, "");
+    }
+  }
+
+  timestampChange(e) {
+    var item = this.props.item;
+    item.timestamp = e.target.value;
+    this.setState({
+      item: item
+    })
   }
 
   edit() {
@@ -22,10 +42,18 @@ class EditExpense extends Component {
     return (
       <tr key={this.props.id}>
         <td><textarea id="editTitle">{this.props.item.title}</textarea></td>
-        <td><textarea id="editDate">{this.props.item.timestamp}</textarea></td>
+        <td><input type='date' id="editDate"
+          onChange={this.timestampChange}
+          placeholder='YYYY-MM-DD'
+          pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" value={this.props.item.timestamp}></input></td>
         <td><textarea id="editDesc">{this.props.item.description}</textarea></td>
-        <td><textarea id="editIncome">{this.props.item.income}</textarea></td>
-        <td><textarea id="editAmount">{this.props.item.amount}</textarea></td>
+        <td>
+          <select id="editIncome">
+            <option value="income" selected={this.props.item.income == 'income'}>income</option>
+            <option value="expense" selected={this.props.item.income == 'expense'}>expense</option>
+          </select>
+        </td>
+        <td><textarea id="editAmount" onChange={this.onAmountChange}>{this.props.item.amount}</textarea></td>
         <td><button
           onClick={this.edit}>Update</button></td>
         <td><button

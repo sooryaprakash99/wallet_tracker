@@ -23,7 +23,7 @@ class Home
     }
 
     addItem() {
-        if (document.getElementById('date').value != null &&
+        if (document.getElementById('title').value != null &&
             document.getElementById('date').value != null &&
             document.getElementById('desc').value != null &&
             document.getElementById('income').value != null &&
@@ -79,8 +79,8 @@ class Home
                     expensesList: this.state.expensesList
                 });
             }).catch((err) => {
-                if (error)
-                    console.log(error);
+                if (err)
+                    console.log(err);
             });
     }
 
@@ -92,8 +92,8 @@ class Home
                     expensesList: this.state.expensesList
                 });
             }).catch((err) => {
-                if (error)
-                    console.log(error);
+                if (err)
+                    console.log(err);
             });
     }
 
@@ -116,7 +116,6 @@ class Home
 
     render() {
         return (<div>
-            <h1>Wallet Tracker</h1>
             <button onClick={this.logout}>Logout</button>
             <table>
                 <thead>
@@ -131,10 +130,15 @@ class Home
                 <tbody>
                     <tr>
                         <td><input type="text" id="title" placeHolder="Enter the title"></input></td>
-                        <td><input type="text" id="date" placeHolder="Enter the date"></input></td>
+                        <td><input type='date' id="date" placeholder='YYYY-MM-DD' pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"></input></td>
                         <td><input type="text" id="desc" placeHolder="Enter the Desc"></input></td>
-                        <td><input type="text" id="income" placeHolder="Enter the Income"></input></td>
-                        <td><input type="text" id="amount" placeHolder="Enter the Amount"></input></td>
+                        <td>
+                            <select id="income">
+                                <option value="income">income</option>
+                                <option value="expense">expense</option>
+                            </select>
+                        </td>
+                        <td><input type="number" id="amount" placeHolder="Enter the Amount"></input></td>
                         <td><button onClick={this.addItem}>Add</button></td>
                     </tr>
                     {this.state.expensesList.map((item, index) => {
