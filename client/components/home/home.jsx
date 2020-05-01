@@ -37,7 +37,7 @@ class Home
                 amount: document.getElementById('amount').value
             };
 
-            axios.post('http://localhost:3000/expenses', expenseObj)
+            axios.post('/expenses', expenseObj)
                 .then((response) => {
                     this.setState(state => {
                         const expensesList = [...state.expensesList, response.data];
@@ -72,7 +72,7 @@ class Home
         this.state.expensesList[idx] = {};
         this.state.expensesList[idx] = obj;
 
-        axios.put(`http://localhost:3000/expenses/${obj.id}`, obj)
+        axios.put(`/expenses/${obj.id}`, obj)
             .then((response) => {
                 this.state.expensesList[idx] = response.data;
                 this.setState({
@@ -85,7 +85,7 @@ class Home
     }
 
     deleteItem(id, idx) {
-        axios.delete(`http://localhost:3000/expenses/${id}`)
+        axios.delete(`/expenses/${id}`)
             .then((response) => {
                 this.state.expensesList.splice(idx, 1);
                 this.setState({
@@ -103,7 +103,7 @@ class Home
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/expenses')
+        axios.get('/expenses')
             .then((response) => {
                 this.setState({ expensesList: response.data });
             })

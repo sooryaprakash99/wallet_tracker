@@ -24,7 +24,7 @@ class Login extends React.Component {
         e.preventDefault();
 
         const { username, password } = this.state;
-        axios.post('http://localhost:3000/login', {
+        axios.post('/login', {
             username: username,
             password: password
         })
