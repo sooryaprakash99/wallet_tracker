@@ -1,4 +1,6 @@
-var http = require('httpY');
+
+import logger from './utils/logger';
+var http = require('http');
 var express = require('express');
 var path = require('path');
 
@@ -41,6 +43,14 @@ var auth = function (req, res, next) {
   }
 }
 
+app.use(function (err, req, res, next) {
+  if (err !== null) {
+    console.log(err);
+    logger.error(req.path, err)
+  }
+  
+})
+
 app.get('/', (req, res) => {
   res.sendFile('public/default.html', { root: __dirname })
 });
@@ -55,6 +65,7 @@ app.get('/logout', (req, res) => {
 });
 
 http.createServer(app).listen(app.get('port'), function () {
+  logger.info('Express server listening on port ' + app.get('port'))
   console.log('Express server listening on port ' + app.get('port'))
 })
 

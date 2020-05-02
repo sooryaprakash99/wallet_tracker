@@ -1,5 +1,9 @@
 "use strict";
 
+var _logger = _interopRequireDefault(require("./utils/logger"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var http = require('http');
 
 var express = require('express');
@@ -13,7 +17,7 @@ var loginRouter = require('./routes/login');
 var expensesRouter = require('./routes/expenses');
 
 var app = express();
-app.set('port', 8080);
+app.set('port', 3000);
 app.use(session({
   secret: 'XYk2!',
   resave: false,
@@ -44,8 +48,12 @@ var auth = function auth(req, res, next) {
   }
 };
 
+app.use(function (err, req, res, next) {
+  if (err !== null) {
+    _logger.default.error(err);
+  }
+});
 app.get('/', function (req, res) {
-  console.log("inside here::::::::::");
   res.sendFile('public/default.html', {
     root: __dirname
   });
@@ -58,5 +66,7 @@ app.get('/logout', function (req, res) {
   });
 });
 http.createServer(app).listen(app.get('port'), function () {
+  _logger.default.info('Express server listening on port ' + app.get('port'));
+
   console.log('Express server listening on port ' + app.get('port'));
 });
