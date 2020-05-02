@@ -16,25 +16,27 @@
     width: 40%;
 }
 
-#loading{
-    margin-top: 50px;
-    font-size: large;
-    font-weight: bold;
-    color: #0008ff;
+
+
+.lgn-main {
+    width: 38%;
+    margin-left: 34%;
+    background: #00bfff;
 }
 
-body{
-    background-color: #f7e6e6; 
+.logoutBtn {
+    float: right
+}
+
+.frm-login {
+    margin-left: 35%;
+    width: 30%; 
 }
 
 table {
     border-collapse: collapse;
 }
-  
-th, td {
-    text-align: left;
-    padding: 8px;
-}
+
   
 tr:nth-child(even){background-color: #f2f2f2}
   

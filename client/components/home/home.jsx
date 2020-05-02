@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import ListExpenses from '../list/listExpenses';
 import EditExpense from '../editList/EditExpense';
 
@@ -116,40 +117,49 @@ class Home
 
     render() {
         return (<div>
-            <button onClick={this.logout}>Logout</button>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Title</td>
-                        <td>Date</td>
-                        <td>Description</td>
-                        <td>Income/Expense</td>
-                        <td>Amount</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" id="title" placeHolder="Enter the title"></input></td>
-                        <td><input type='date' id="date" placeholder='YYYY-MM-DD' pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"></input></td>
-                        <td><input type="text" id="desc" placeHolder="Enter the Desc"></input></td>
-                        <td>
-                            <select id="income">
-                                <option value="income">income</option>
-                                <option value="expense">expense</option>
-                            </select>
-                        </td>
-                        <td><input type="number" id="amount" placeHolder="Enter the Amount"></input></td>
-                        <td><button onClick={this.addItem}>Add</button></td>
-                    </tr>
-                    {this.state.expensesList.map((item, index) => {
-                        return (item.isEdit ?
-                            (
-                                <EditExpense index={index} id={item.id} item={item} updateItem={this.updateItem} deleteItem={this.deleteItem} />)
-                            : (
-                                <ListExpenses index={index} id={item.id} item={item} editItem={this.editItem} deleteItem={this.deleteItem} />))
-                    })}
-                </tbody>
-            </table>
+            <Container>
+                <Row>
+                    <Col><Button variant="danger" className={"logoutBtn"} onClick={this.logout}>Logout</Button></Col>
+                </Row>
+                <Row> </Row>
+                <Row>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <td>Title</td>
+                                <td>Date</td>
+                                <td>Description</td>
+                                <td>Income/Expense</td>
+                                <td>Amount</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" id="title" placeHolder="Enter the title"></input></td>
+                                <td><input type='date' id="date" placeholder='YYYY-MM-DD' pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"></input></td>
+                                <td><input type="text" id="desc" placeHolder="Enter the Desc"></input></td>
+                                <td>
+                                    <select id="income">
+                                        <option value="income">income</option>
+                                        <option value="expense">expense</option>
+                                    </select>
+                                </td>
+                                <td><input type="number" id="amount" placeHolder="Enter the Amount"></input></td>
+                                <td><Button variant="primary" onClick={this.addItem}>Add</Button></td>
+                            </tr>
+                            {this.state.expensesList.map((item, index) => {
+                                return (item.isEdit ?
+                                    (
+                                        <EditExpense index={index} id={item.id} item={item} updateItem={this.updateItem} deleteItem={this.deleteItem} />)
+                                    : (
+                                        <ListExpenses index={index} id={item.id} item={item} editItem={this.editItem} deleteItem={this.deleteItem} />))
+                            })}
+                        </tbody>
+                    </Table>
+
+                </Row>
+            </Container>
+
 
         </div>)
     }

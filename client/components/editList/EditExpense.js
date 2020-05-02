@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 
 class EditExpense extends Component {
   constructor(props) {
@@ -54,10 +55,10 @@ class EditExpense extends Component {
           </select>
         </td>
         <td><textarea id="editAmount" onChange={this.onAmountChange}>{this.props.item.amount}</textarea></td>
-        <td><button
-          onClick={this.edit}>Update</button></td>
-        <td><button
-          onClick={() => this.props.deleteItem(this.props.id, this.props.index)}>Delete</button></td>
+        <td><Button variant="primary"
+          onClick={this.edit}>Update</Button></td>
+        <td><Button variant="danger"
+          onClick={() => this.props.deleteItem(this.props.id, this.props.index)}>Delete</Button></td>
       </tr>
     );
 

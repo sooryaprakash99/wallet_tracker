@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 
 class ListExpenses extends Component {
     constructor(props) {
@@ -15,10 +16,10 @@ class ListExpenses extends Component {
                 <td>{this.props.item.description}</td>
                 <td>{this.props.item.income}</td>
                 <td>{this.props.item.amount}</td>
-                <td><button
-                    onClick={() => this.props.editItem(this.props.index)}>Edit</button></td>
-                <td><button
-                    onClick={() => this.props.deleteItem(this.props.id, this.props.index)}>Delete</button></td>
+                <td><Button variant="secondary"
+                    onClick={() => this.props.editItem(this.props.index)}>Edit</Button></td>
+                <td><Button variant="danger"
+                    onClick={() => this.props.deleteItem(this.props.id, this.props.index)}>Delete</Button></td>
             </tr>
         );
 

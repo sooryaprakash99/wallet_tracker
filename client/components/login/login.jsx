@@ -44,10 +44,10 @@ class Login extends React.Component {
     render() {
 
         return (
-            <div>
-                <Form onSubmit={this.onSubmit}>
+            <div class="lgn-main">
+                <Form class="frm-login" onSubmit={this.onSubmit}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>User Name</Form.Label>
+                        <Form.Label>User Name</Form.Label>&nbsp;
                         <Form.Control type="email" placeholder="Enter Username"
                             label="Username"
                             name="username"
@@ -56,7 +56,7 @@ class Login extends React.Component {
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Password</Form.Label>&nbsp;
                         <Form.Control type="password" placeholder="Password" label="Password"
                             name="password" onChange={this.handleChange} />
                     </Form.Group>
